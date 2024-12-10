@@ -5,9 +5,9 @@ export const CarritoContext = createContext();
 
 export const CarritoProvider = (props) => {
 	const [products, setProducts] = useState([
-		{ id: 1, name: "zapatos", price: 10 },
-		{ id: 2, name: "bolsos", price: 10 },
-		{ id: 3, name: "vestidos", price: 20 },
+		{ id: 1, name: "zapatos", price: 10, deleted: false },
+		{ id: 2, name: "bolsos", price: 10, deleted: false },
+		{ id: 3, name: "vestidos", price: 20, deleted: false },
 	]);
 
 	const addProduct = (product) => {
@@ -16,11 +16,19 @@ export const CarritoProvider = (props) => {
 
 	const deleteProduct = (productId) => {
 		setProducts(
-			products.filter((p) => {
-				return p.id !== productId;
+			products.map((p) => {
+				// p.id !== productId;
+				if (p.id === productId) {
+					return { ...p, deleted: true };
+				}
+
+				return p;
 			}),
 		);
 	};
+
+	const deletedProducts = products.filter((p) => p.deleted);
+	const undeletedProducts = products.filter((p) => !p.deleted);
 
 	return (
 		<CarritoContext.Provider
@@ -28,6 +36,8 @@ export const CarritoProvider = (props) => {
 				products,
 				addProduct,
 				deleteProduct,
+				undeletedProducts,
+				deletedProducts,
 			}}
 		>
 			{props.children}
