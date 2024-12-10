@@ -11,9 +11,9 @@ export const ProductList = () => {
 		<>
 			<h2>Your shopping basket:</h2>
 			<ul>
-				{products.map((item) => (
+				{products.map((item, idx) => (
 					<li key={item.id}>
-						{item.id}. Producto: {item.name} - precio: ${item.price}
+						{idx + 1}. Producto: {item.name} - precio: ${item.price}
 					</li>
 				))}
 			</ul>

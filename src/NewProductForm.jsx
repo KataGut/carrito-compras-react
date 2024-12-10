@@ -3,14 +3,26 @@ import { CarritoContext } from "./CarritoProvider";
 import { useState } from "react";
 
 export const NewProductForm = () => {
-	const { products } = useContext(CarritoContext);
+	const { products, addProduct } = useContext(CarritoContext);
+
 	const [nombre, setNombre] = useState("");
 	const [precio, setPrecio] = useState("");
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		addProduct({ id: crypto.randomUUID(), name: nombre, price: precio });
+		resetInputs();
+	};
+
+	const resetInputs = () => {
+		setNombre("");
+		setPrecio("");
+	};
 
 	return (
 		<>
 			<h2>Add a new product:</h2>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="producto">Nombre del producto: </label>
 					<input
@@ -25,9 +37,15 @@ export const NewProductForm = () => {
 					<input
 						id="precio"
 						type="number"
-						value={precio}
+						value={precio || ""}
 						onChange={(e) => setPrecio(Number(e.target.value))}
 					/>
+				</div>
+				<div>
+					<button type="submit" disabled={!nombre || !precio}>
+						{" "}
+						Submit
+					</button>
 				</div>
 			</form>
 		</>

@@ -10,21 +10,18 @@ export const CarritoProvider = (props) => {
 		{ id: 3, name: "vestidos", price: 20 },
 	]);
 
-	const addProducts = () => {};
+	const addProduct = (product) => {
+		setProducts([...products, product]);
+	};
 
 	return (
 		<CarritoContext.Provider
 			value={{
 				products,
-				addProducts,
+				addProduct,
 			}}
 		>
 			{props.children}
-			{/*             <label htmlFor="productName">
-                Write your new product:
-            </label>
-            <input id="productName" value={products.name} type='text' onChange={e => setProducts(e.value.target)}>
-            </input> */}
 		</CarritoContext.Provider>
 	);
 };
