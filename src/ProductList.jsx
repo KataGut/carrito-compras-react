@@ -4,8 +4,7 @@ import { CarritoContext } from "./CarritoProvider";
 export const ProductList = () => {
 	// const { products, categories } = useContext(CarritoContext);
 	const context = useContext(CarritoContext);
-
-	const { products } = context;
+	const { products, deleteProduct } = context;
 
 	return (
 		<>
@@ -13,7 +12,10 @@ export const ProductList = () => {
 			<ul>
 				{products.map((item, idx) => (
 					<li key={item.id}>
-						{idx + 1}. Producto: {item.name} - precio: ${item.price}
+						{idx + 1}. Producto: {item.name} - precio: ${item.price}{" "}
+						<button type="button" onClick={() => deleteProduct(item.id)}>
+							Delete
+						</button>
 					</li>
 				))}
 			</ul>

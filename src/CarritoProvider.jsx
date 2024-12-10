@@ -14,11 +14,20 @@ export const CarritoProvider = (props) => {
 		setProducts([...products, product]);
 	};
 
+	const deleteProduct = (productId) => {
+		setProducts(
+			products.filter((p) => {
+				return p.id !== productId;
+			}),
+		);
+	};
+
 	return (
 		<CarritoContext.Provider
 			value={{
 				products,
 				addProduct,
+				deleteProduct,
 			}}
 		>
 			{props.children}
