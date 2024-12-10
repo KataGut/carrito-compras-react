@@ -14,7 +14,7 @@ export const ProductList = () => {
 					<li key={item.id}>
 						{idx + 1}. Producto: {item.name} - precio: ${item.price}{" "}
 						<button type="button" onClick={() => deleteProduct(item.id)}>
-							Delete
+							🗑️
 						</button>
 					</li>
 				))}
