@@ -10,8 +10,13 @@ export const NewProductForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		addProduct({ id: crypto.randomUUID(), name: nombre, price: precio });
-		resetInputs();
+
+		if (!nombre || !precio) {
+			alert("Debes escribir un nombre de producto y precio");
+		} else {
+			addProduct({ id: crypto.randomUUID(), name: nombre, price: precio });
+			resetInputs();
+		}
 	};
 
 	const resetInputs = () => {
@@ -42,10 +47,7 @@ export const NewProductForm = () => {
 					/>
 				</div>
 				<div>
-					<button type="submit" disabled={!nombre || !precio}>
-						{" "}
-						Submit
-					</button>
+					<button type="submit"> Submit</button>
 				</div>
 			</form>
 		</>
