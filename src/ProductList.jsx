@@ -4,11 +4,13 @@ import { CarritoContext } from "./CarritoProvider";
 export const ProductList = () => {
 	// const { products, categories } = useContext(CarritoContext);
 	const context = useContext(CarritoContext);
-	const { products, deleteProduct, undeletedProducts } = context;
+	const { deleteProduct, undeletedProducts } = context;
 
 	return (
 		<>
 			<h2>Your shopping basket:</h2>
+			{undeletedProducts.length === 0 && <p>No hay elementos</p>}
+
 			<ul>
 				{undeletedProducts.map((item, idx) => {
 					return (
