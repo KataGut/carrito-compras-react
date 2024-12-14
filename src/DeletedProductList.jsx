@@ -4,11 +4,14 @@ import { CarritoContext } from "./CarritoProvider";
 export const DeletedProductList = () => {
 	// const { products, categories } = useContext(CarritoContext);
 	const context = useContext(CarritoContext);
-	const { products, deletedProducts } = context;
+	const { products, deletedProducts, cleanBasket } = context;
 
 	return (
 		<>
 			<h2>Products Deleted:</h2>
+			<button type="button" onClick={() => cleanBasket()}>
+				Clean basket
+			</button>{" "}
 			<ul>
 				{deletedProducts.map((item, idx) => {
 					return (

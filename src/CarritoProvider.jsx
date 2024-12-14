@@ -27,6 +27,10 @@ export const CarritoProvider = (props) => {
 		);
 	};
 
+	const cleanBasket = () => {
+		setProducts(products.filter((p) => !p.deleted));
+	};
+
 	const deletedProducts = products.filter((p) => p.deleted);
 	const undeletedProducts = products.filter((p) => !p.deleted);
 
@@ -38,6 +42,7 @@ export const CarritoProvider = (props) => {
 				deleteProduct,
 				undeletedProducts,
 				deletedProducts,
+				cleanBasket,
 			}}
 		>
 			{props.children}
