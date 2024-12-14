@@ -5,11 +5,31 @@ import { ProductList } from "./ProductList";
 
 function App() {
 	return (
-		<CarritoProvider>
-			<ProductList />
-			<NewProductForm />
-			<DeletedProductList />
-		</CarritoProvider>
+		<>
+			<h1>Carrito App</h1>
+			<div
+				style={{
+					width: "100%",
+					display: "grid",
+					gridTemplateColumns: "1fr 1fr",
+				}}
+			>
+				<div>
+					<CarritoProvider>
+						<ProductList />
+						<NewProductForm />
+						<DeletedProductList />
+					</CarritoProvider>
+				</div>
+				<div>
+					<CarritoProvider>
+						<ProductList />
+						<NewProductForm />
+						<DeletedProductList />
+					</CarritoProvider>
+				</div>
+			</div>
+		</>
 	);
 }
 
