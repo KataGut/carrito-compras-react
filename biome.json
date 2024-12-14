@@ -21,8 +21,9 @@
 		"rules": {
 			"recommended": true,
 			"correctness": {
-				"noUnusedVariables": "warn",
-				"noUnusedImports": "warn"
+				"noUnusedVariables": "info",
+				"noUnusedImports": "info",
+				"noUndeclaredVariables": "warn"
 			}
 		}
 	},
