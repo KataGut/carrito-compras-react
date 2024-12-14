@@ -27,6 +27,18 @@ export const CarritoProvider = (props) => {
 		);
 	};
 
+	const restoreProduct = (productId) => {
+		setProducts(
+			products.map((p) => {
+				if (p.id === productId) {
+					return { ...p, deleted: false };
+				}
+
+				return p;
+			}),
+		);
+	};
+
 	const cleanBasket = () => {
 		setProducts(products.filter((p) => !p.deleted));
 	};
@@ -42,6 +54,7 @@ export const CarritoProvider = (props) => {
 				deleteProduct,
 				undeletedProducts,
 				deletedProducts,
+				restoreProduct,
 				cleanBasket,
 			}}
 		>

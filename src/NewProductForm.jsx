@@ -3,7 +3,7 @@ import { CarritoContext } from "./CarritoProvider";
 import { useState } from "react";
 
 export const NewProductForm = () => {
-	const { products, addProduct } = useContext(CarritoContext);
+	const { addProduct } = useContext(CarritoContext);
 
 	const [nombre, setNombre] = useState("");
 	const [precio, setPrecio] = useState("");
